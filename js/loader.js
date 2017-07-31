@@ -10,9 +10,10 @@ var StoreInfo =(function () {
 
 			function productLoaderComplete(event) {
 				let productObject = [];
-				console.log( "product info has loaded" );
+				// console.log( "product info has loaded" );
 				productObject = JSON.parse(event.target.responseText);
-				console.log( "productObject", productObject );
+				// console.log( "productObject", productObject );
+				showProductInfo(productObject)
 			}
 
 			function productLoaderFailed (event) {
@@ -30,9 +31,9 @@ var StoreInfo =(function () {
 
 			function categoryLoaderComplete(event) {
 				let categoryObject =[];
-				console.log( "category info has loaded" );
+				// console.log( "category info has loaded" );
 				categoryObject = JSON.parse(event.target.responseText);
-				console.log( "categoryObject", categoryObject );
+				// console.log( "categoryObject", categoryObject );
 			}
 
 			function categoryLoaderFailed(event) {
