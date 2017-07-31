@@ -30,7 +30,7 @@ var StoreInfo =(function () {
 
 			function categoryLoaderComplete(event) {
 				let categoryObject =[];
-				console.log( "product info has loaded" );
+				console.log( "category info has loaded" );
 				categoryObject = JSON.parse(event.target.responseText);
 				console.log( "categoryObject", categoryObject );
 			}
