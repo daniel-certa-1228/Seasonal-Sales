@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
 	font-family: sans-serif;
 	background-color: gainsboro;
@@ -5,4 +9,25 @@ body {
 
 .main-headline {
 	text-align: center;
+}
+
+h1 {
+	margin: .5em 0 .25em;
+}
+
+.select {
+	text-align: center;
+}
+
+#product-div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.product-card {
+	flex-basis: 30%;
+	background-color: ghostwhite;
+	margin-top: 1em;
 }
