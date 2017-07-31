@@ -6,11 +6,10 @@ function showProductInfo(productObject) {
 	console.log( "products", products );
 
 	for (let i = 0; i < products.length; i++) {
-		 if products.
+		 // if products.
 	};
 	
-	// for (let i = 0; i < .length; i++) {};
-	// let catID = 
+
 }
 
 
