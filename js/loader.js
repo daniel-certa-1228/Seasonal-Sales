@@ -1,9 +1,9 @@
 console.log( "loader.js" );
 
-var StoreInfo =(function () {
+{
+	var StoreInfo ={}
 
-	return {
-		loadProductInfo: (callbackFucntion) => {
+		StoreInfo.loadProductInfo = (callbackFucntion) => {
 			let productLoader = new XMLHttpRequest();
 			productLoader.addEventListener("load", productLoaderComplete);
 			productLoader.addEventListener("error", productLoaderFailed);
@@ -13,7 +13,7 @@ var StoreInfo =(function () {
 				// console.log( "product info has loaded" );
 				productObject = JSON.parse(event.target.responseText);
 				// console.log( "productObject", productObject );
-				showProductInfo(productObject)
+				StoreInfo.showProductInfo(productObject)
 			}
 
 			function productLoaderFailed (event) {
@@ -24,7 +24,7 @@ var StoreInfo =(function () {
 			productLoader.send();
 		},
 
-		loadCategoryInfo: (callbackFucntion) => {
+		StoreInfo.loadCategoryInfo = (callbackFucntion) => {
 			let categoryLoader = new XMLHttpRequest();
 			categoryLoader.addEventListener("load", categoryLoaderComplete);
 			categoryLoader.addEventListener("error", categoryLoaderFailed);
@@ -43,5 +43,5 @@ var StoreInfo =(function () {
 			categoryLoader.open("GET", "../json/categories.json");
 			categoryLoader.send();
 		}
-	}
-})();
+	
+}
