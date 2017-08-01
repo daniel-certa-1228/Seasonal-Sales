@@ -35,5 +35,6 @@ let seasonSelect = document.getElementById("season-select");
 
 			
 		}
+		
 	});
 }
