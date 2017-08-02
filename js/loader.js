@@ -2,18 +2,20 @@ console.log( "loader.js" );
 
 {
 	var StoreInfo ={}
-
-		StoreInfo.loadProductInfo = (callbackFucntion) => {
+	let productObject = [];
+	let categoryObject =[];
+		StoreInfo.loadProductInfo = () => {
 			let productLoader = new XMLHttpRequest();
 			productLoader.addEventListener("load", productLoaderComplete);
 			productLoader.addEventListener("error", productLoaderFailed);
 
 			function productLoaderComplete(event) {
-				let productObject = [];
+	
 				// console.log( "product info has loaded" );
 				productObject = JSON.parse(event.target.responseText);
 				// console.log( "productObject", productObject );
 				StoreInfo.showProductInfo(productObject)
+				return productObject;
 			}
 
 			function productLoaderFailed (event) {
@@ -24,16 +26,18 @@ console.log( "loader.js" );
 			productLoader.send();
 		},
 
-		StoreInfo.loadCategoryInfo = (callbackFucntion) => {
+		StoreInfo.loadCategoryInfo = () => {
 			let categoryLoader = new XMLHttpRequest();
 			categoryLoader.addEventListener("load", categoryLoaderComplete);
 			categoryLoader.addEventListener("error", categoryLoaderFailed);
 
 			function categoryLoaderComplete(event) {
-				let categoryObject =[];
+				
 				// console.log( "category info has loaded" );
 				categoryObject = JSON.parse(event.target.responseText);
 				// console.log( "categoryObject", categoryObject );
+				StoreInfo.discount(categoryObject);
+				// return categoryObject;
 			}
 
 			function categoryLoaderFailed(event) {
@@ -43,5 +47,7 @@ console.log( "loader.js" );
 			categoryLoader.open("GET", "../json/categories.json");
 			categoryLoader.send();
 		}
-	
+
+		StoreInfo.loadProductInfo();
+		StoreInfo.loadCategoryInfo();
 }
