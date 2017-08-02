@@ -37,7 +37,7 @@ console.log( "loader.js" );
 				categoryObject = JSON.parse(event.target.responseText);
 				// console.log( "categoryObject", categoryObject );
 				StoreInfo.discount(categoryObject);
-				// return categoryObject;
+				return categoryObject;
 			}
 
 			function categoryLoaderFailed(event) {

@@ -10,30 +10,25 @@ console.log( "seasonal-sales.js" );
 
 	let seasonSelect = document.getElementById("season-select");
 
-	let apparelSale = document.getElementById("apparel-sale");
-	let hardwareSale = document.getElementById("hardware-sale");
-	let furnitureSale = document.getElementById("furniture-sale");
-
 	seasonSelect.addEventListener("change", (event) => {
 		StoreInfo.loadProductInfo();
-	let apparelSale = document.getElementById("apparel-sale");
-	let hardwareSale = document.getElementById("hardware-sale");
-	let furnitureSale = document.getElementById("furniture-sale");
+
 
 		outputDiv.innerHTML="";
 		
 		
-		if (seasonSelect.value === "1") {
+		if (seasonSelect.value === "0") {
 			winter = true;
 			autumn = false;
 			spring = false;
+
 		}
-		if (seasonSelect.value === "2") {
+		if (seasonSelect.value === "1") {
 			autumn = true;
 			winter = false;
 			spring = false;
 		}
-		if (seasonSelect.value === "3") {
+		if (seasonSelect.value === "2") {
 			spring = true;
 			autumn = false;
 			winter = false;
@@ -52,11 +47,11 @@ console.log( "seasonal-sales.js" );
 {
 
 	let discounts= []
-	console.log( "discounts", discounts );
+	// console.log( "discounts", discounts );
 	StoreInfo.discount = (categoryObject) => {
 
 	let categories = categoryObject.categories;
-	console.log( "categories", categories );
+	// console.log( "categories", categories );
 
 		for (let i = 0; i < categories.length; i++) {
 		discounts.push(categories[i].discount)
@@ -65,7 +60,7 @@ console.log( "seasonal-sales.js" );
 
 
 	StoreInfo.showProductInfo = (productObject) => {
-		console.log( "productObject", productObject );
+		// console.log( "productObject", productObject );
 		let products = productObject.products;
 		let apparelCard = `<div class="product-card" id="apparel"><h2>Apparel</h2>`
 		let furnitureCard = `<div class="product-card" id="furniture"><h2>Furniture</h2>`
@@ -80,7 +75,7 @@ console.log( "seasonal-sales.js" );
 
 				 	apparelCard += `<section class="item" id="item--${i}">
 				 					<h4>${products[i].name}</h4>
-				 					<h5>Price - $${Math.round((products[i].price*100 - (products[i].price*100)* discounts[0]))/100}</h5>
+				 					<h5>Price - $${Math.round((products[i].price*100 - (products[i].price*100)* discounts[seasonSelect.value]))/100}</h5>
 				 					</section>`
 
 				 	}  else  {
@@ -96,7 +91,7 @@ console.log( "seasonal-sales.js" );
 
 				 	furnitureCard += `<section class="item" id="item--${i}">
 				 					<h4>${products[i].name}</h4>
-				 					<h5>Price - $${Math.round((products[i].price*100 - (products[i].price*100)* discounts[1]))/100}</h5>
+				 					<h5>Price - $${Math.round((products[i].price*100 - (products[i].price*100)* discounts[seasonSelect.value]))/100}</h5>
 				 					</section>`
 
 				 	}  else  {
@@ -113,7 +108,7 @@ console.log( "seasonal-sales.js" );
 
 				 	hardwareCard += `<section class="item" id="item--${i}">
 				 					<h4>${products[i].name}</h4>
-				 					<h5>Price - $${Math.round((products[i].price*100 - (products[i].price*100)*discounts[1]))/100}</h5>
+				 					<h5>Price - $${Math.round((products[i].price*100 - (products[i].price*100)*discounts[seasonSelect.value]))/100}</h5>
 				 					</section>`
 
 			 		}  else  {
@@ -128,12 +123,38 @@ console.log( "seasonal-sales.js" );
 
 			 }
 		};
+		
+				if (seasonSelect.value === "0") {
 
-				apparelCard += `<h3 class="hidden red" id="apparel-sale">SALE! 10% OFF!</h3></div>`
+					apparelCard += `<h3 class="red" id="apparel-sale">SALE! 10% OFF!</h3></div>`
+
+				}  else  {
+
+					apparelCard += `<h3 class="hidden red" id="apparel-sale">SALE! 10% OFF!</h3></div>`
+
+				}
 				outputDiv.innerHTML += apparelCard
-				furnitureCard += `<h3 class="hidden red" id="furniture-sale">SALE! 25% OFF!</h3></div>`
+
+				if (seasonSelect.value === "1") {
+
+					furnitureCard += `<h3 class="red" id="furniture-sale">SALE! 25% OFF!</h3></div>`
+
+				}  else  {
+
+					furnitureCard += `<h3 class="hidden red" id="furniture-sale">SALE! 25% OFF!</h3></div>`
+				}
 				outputDiv.innerHTML += furnitureCard
-				hardwareCard += `<h3 class="hidden red" id="hardware-sale">SALE! 15% OFF!</h3></div>`
+
+				if (seasonSelect.value === "2") {
+
+					hardwareCard += `<h3 class="red" id="hardware-sale">SALE! 15% OFF!</h3></div>`
+
+				}  else  {
+
+					hardwareCard += `<h3 class="hidden red" id="hardware-sale">SALE! 15% OFF!</h3></div>`
+
+				}
+				
 				outputDiv.innerHTML += hardwareCard
 			}
 
