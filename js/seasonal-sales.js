@@ -67,6 +67,7 @@ console.log( "seasonal-sales.js" );
 
 	});
 
+	//Function to display to DOM.  There needs to be a generic card that pulld data from an object for each product.
 	StoreInfo.showProductInfo = (productObject) => {
 		// console.log( "productObject", productObject );
 		let products = productObject.products;
