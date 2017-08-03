@@ -1,8 +1,10 @@
 console.log( "seasonal-sales.js" );
 
+
+//IIFE that unpacks the discount values into an array
 {
 	let discounts= []
-	console.log( "discounts", discounts );
+	// console.log( "discounts", discounts );
 	
 	StoreInfo.discount = (categoryObject) => {
 
@@ -21,7 +23,7 @@ console.log( "seasonal-sales.js" );
 
 }
 
-
+//Main Display IIFE - needs to be split out?
 {
 
 	let outputDiv = document.getElementById("product-div");
@@ -64,9 +66,6 @@ console.log( "seasonal-sales.js" );
 		}
 
 	});
-
-
-
 
 	StoreInfo.showProductInfo = (productObject) => {
 		// console.log( "productObject", productObject );
@@ -140,7 +139,6 @@ console.log( "seasonal-sales.js" );
 				}  else  {
 
 					apparelCard += `<h3 class="hidden red" id="apparel-sale">SALE! 10% OFF!</h3></div>`
-
 				}
 				outputDiv.innerHTML += apparelCard
 
@@ -161,10 +159,9 @@ console.log( "seasonal-sales.js" );
 				}  else  {
 
 					hardwareCard += `<h3 class="hidden red" id="hardware-sale">SALE! 15% OFF!</h3></div>`
-
 				}
-				
 				outputDiv.innerHTML += hardwareCard
+
 			}
 
 }
