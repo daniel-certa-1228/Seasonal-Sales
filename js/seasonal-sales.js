@@ -1,9 +1,32 @@
 console.log( "seasonal-sales.js" );
-/////////////////////////////////////////////////////////////
-//public as of now
+
+{
+	let discounts= []
+	console.log( "discounts", discounts );
+	
+	StoreInfo.discount = (categoryObject) => {
+
+	let categories = categoryObject.categories;
+	// console.log( "categories", categories );
+
+		for (let i = 0; i < categories.length; i++) {
+		discounts.push(categories[i].discount)
+		};
+		// return discounts;
+	}
+
+	StoreInfo.passDiscounts = () => {
+		return discounts;
+	}
+
+}
+
+
+{
+
 	let outputDiv = document.getElementById("product-div");
-
-
+	let discounts = StoreInfo.passDiscounts();
+	console.log( "this working?", discounts );
 	let winter = false;
 	let autumn = false;
 	let spring = false;
@@ -42,21 +65,7 @@ console.log( "seasonal-sales.js" );
 
 	});
 
-////////////////////////////////////////////////////////////
 
-{
-
-	let discounts= []
-	// console.log( "discounts", discounts );
-	StoreInfo.discount = (categoryObject) => {
-
-	let categories = categoryObject.categories;
-	// console.log( "categories", categories );
-
-		for (let i = 0; i < categories.length; i++) {
-		discounts.push(categories[i].discount)
-		};
-	}
 
 
 	StoreInfo.showProductInfo = (productObject) => {

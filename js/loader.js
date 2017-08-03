@@ -1,9 +1,17 @@
 console.log( "loader.js" );
 
+//Main IIFE
 {
+
 	var StoreInfo ={}
+
+}
+
+//LOADING FUNCTION - loads and parses the products.json
+{
+	
 	let productObject = [];
-	let categoryObject =[];
+
 		StoreInfo.loadProductInfo = () => {
 			let productLoader = new XMLHttpRequest();
 			productLoader.addEventListener("load", productLoaderComplete);
@@ -14,8 +22,7 @@ console.log( "loader.js" );
 				// console.log( "product info has loaded" );
 				productObject = JSON.parse(event.target.responseText);
 				// console.log( "productObject", productObject );
-				StoreInfo.showProductInfo(productObject)
-				return productObject;
+				StoreInfo.showProductInfo(productObject); //calling the display to DOM function
 			}
 
 			function productLoaderFailed (event) {
@@ -24,7 +31,14 @@ console.log( "loader.js" );
 
 			productLoader.open("GET", "../json/products.json");
 			productLoader.send();
-		},
+		}
+
+		StoreInfo.loadProductInfo();
+}
+
+//LOADING FUNCTION - loads and parses the category.json
+{
+	let categoryObject =[];
 
 		StoreInfo.loadCategoryInfo = () => {
 			let categoryLoader = new XMLHttpRequest();
@@ -36,8 +50,7 @@ console.log( "loader.js" );
 				// console.log( "category info has loaded" );
 				categoryObject = JSON.parse(event.target.responseText);
 				// console.log( "categoryObject", categoryObject );
-				StoreInfo.discount(categoryObject);
-				return categoryObject;
+				StoreInfo.discount(categoryObject);  //calling the function to unpack the discounts to an array
 			}
 
 			function categoryLoaderFailed(event) {
@@ -48,6 +61,5 @@ console.log( "loader.js" );
 			categoryLoader.send();
 		}
 
-		StoreInfo.loadProductInfo();
 		StoreInfo.loadCategoryInfo();
 }
