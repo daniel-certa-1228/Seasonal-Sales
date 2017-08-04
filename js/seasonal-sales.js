@@ -28,7 +28,7 @@ console.log( "seasonal-sales.js" );
 
 	let outputDiv = document.getElementById("product-div");
 	let discounts = StoreInfo.passDiscounts();
-	console.log( "this working?", discounts );
+	// console.log( "this working?", discounts );
 	let winter = false;
 	let autumn = false;
 	let spring = false;
